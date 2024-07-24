@@ -7,7 +7,6 @@ services:
       dockerfile: TesteDocker.API/Dockerfile
     ports:
       - "5100:5100"
-      - "5101:5101"
   testedocker.database:
     image: postgres:latest
     container_name: testedocker.database
