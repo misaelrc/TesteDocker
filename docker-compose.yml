@@ -1,0 +1,24 @@
+services:
+  testedocker.api:
+    image: ${DOCKER_REGISTRY-}testedockerapi
+    container_name: testedocker.api
+    build:
+      context: .
+      dockerfile: TesteDocker.API/Dockerfile
+    ports:
+      - "5100:5100"
+      - "5101:5101"
+  testedocker.database:
+    image: postgres:latest
+    container_name: testedocker.database
+    environment:
+      - POSTGRES_DB=teste
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/products-db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+      
+
+
